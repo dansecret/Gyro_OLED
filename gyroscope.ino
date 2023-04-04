@@ -3,7 +3,7 @@
  * gyro scope orientation KRSBI RSCUAD 
  * AHMAD DAHLAN UNIVERSITY INDONESA
  * Author : JIhad Rahmawan
- * Develop :Danu Andrean, muhammad annas
+ * Develop :Danu Andrean, muhammad annas,hamdandih
  */
 
 //============== i2c inisialisasi======================= 
@@ -71,10 +71,10 @@ bool        isActive    = false;  //
 void Gyro();
 void dmpDataReady();
 void Calibration();
-void Soccer();
-void PickUp();
-void KickoffTeam();
-void KickoffEnemy();
+void MODE_1();
+void MODE_2();
+void MODE_3();
+void MODE_4();
 void Menu();
 void Button();
 void (* reset) (void)= 0;
@@ -269,7 +269,7 @@ void Calibration()
   display.display();
 }
 
-void Soccer()
+void MODE_1()
 {
   display.clearDisplay();
   display.setTextSize(1);
@@ -293,11 +293,11 @@ void Soccer()
   
   display.setTextColor(WHITE);
   display.setCursor(28,18);
-  display.print("SOCCER"); 
+  display.print("MODE 1"); 
   display.display();
 }
 
-void PickUp()
+void MODE_2()
 {
   display.clearDisplay();
   display.setTextSize(1);
@@ -321,11 +321,11 @@ void PickUp()
   display.setTextSize(2); 
   display.setTextColor(WHITE);
   display.setCursor(22,18);
-  display.print("PICK-UP"); 
+  display.print("MODE 2"); 
   display.display();
 }
 
-void KickoffTeam()
+void MODE_3()
 {
   display.clearDisplay();
   display.setTextSize(1);
@@ -347,12 +347,12 @@ void KickoffTeam()
   display.setTextSize(2); 
   display.setTextColor(WHITE);
   
-  display.setCursor(18,13);
-  display.print("KICKOFF-TEAM"); 
+  display.setCursor(28,18);
+  display.print("MODE 3"); 
   display.display();
 }
 
-void KickoffEnemy()
+void MODE_4()
 {
   display.clearDisplay();
   display.setTextSize(1);
@@ -374,8 +374,8 @@ void KickoffEnemy()
   display.setTextSize(2); 
   display.setTextColor(WHITE);
   
-  display.setCursor(20,15);
-  display.print("KICKOFF-ENEMY"); 
+  display.setCursor(22,18);
+  display.print("MODE 4"); 
   display.display();
 }
 
@@ -383,19 +383,19 @@ void Menu()
 {
     if (menu==1)
   {
-    Soccer();
+    MODE_1();
   }
   else if (menu==2)
   {
-    PickUp();
+    MODE_2();
   }
   else if (menu==3)
   {
-    KickoffTeam();
+    MODE_3();
   }
   else if (menu==4)
   {
-    KickoffEnemy();
+    MODE_4();
   }
 }
 
@@ -429,17 +429,17 @@ void Button()
     if (nilai_b1 == LOW && nilai_b2 == LOW)
     {
       isActive  = false;  // release lock
-      menu      = 1;      // default soccer
+      menu      = 1;      //MODE 1 // default soccer
       action    = 0;      // robot stop
       delay(100); 
     }
 
     // menu selection
     if(action == 0) Menu();
-    if(action == 1) Soccer();
-    if(action == 2) PickUp();
-    if(action == 3) KickoffTeam();
-    if(action == 4) KickoffEnemy();
+    if(action == 1) MODE_1();
+    if(action == 2) MODE_2();
+    if(action == 3) MODE_3();
+    if(action == 4) MODE_4();
     
     }
 }
